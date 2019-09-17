@@ -1,0 +1,44 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Oswald";
+  src: url("../fonts/Oswald.ttf") format("truetype");
+}
+*{
+  font-family: "Roboto";
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Oswald";
+}
+.btn-logout{
+	padding: 10px 15px;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    background-color:#008000;
+}
+.img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+	width: 100%;
+    height: 600px;
+}
+.aa-product-catg li {
+    background: rgba(255,255,255,1);
+}
+.aa-product-catg li figure .aa-add-card-btn{
+	background-color: #de620f;
+}
+.aa-product-catg li figure .aa-add-card-btn:hover{
+	color:white;
+}
+.aa-product-catg li .aa-product-price {
+    color: #f40b2a;
+    font-size: 18px;
+}
+.aa-product-catg li .aa-product-title a{
+	color: #00792c;
+}
+.img-blog{
+	height: 200px !important;
+}

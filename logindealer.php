@@ -1,0 +1,36 @@
+<?php 
+include('conf/config.php') ;
+include('conf/funct.php');
+$tablefieldss = [
+	"email" => "mail",
+	"mdp" => "motpasse",
+];
+if (isset($_POST['logindealer'])) {
+	$data= demystify($tablefieldss,$_POST);
+    $erreurs = [];
+    if (!filter_var($data["email"],FILTER_VALIDATE_EMAIL) ) {
+     $erreurs[] = "Veuillez entrer un email valide";
+    }
+    if (!notEmpty($data["mdp"]) ) {
+     $erreurs[] = "Veuillez entrer un mot de passe";
+    }
+    if (empty($erreurs)) {
+   		$sql = "SELECT * FROM dealers WHERE email = ? AND mdp = ?";
+   		$q = $db->prepare($sql);
+   		$q->execute([e($data["email"]),e(sha1($data["mdp"]))]);
+   		$rs = $q->fetch(PDO::FETCH_OBJ);
+   		$q->closeCursor();
+   		if (!$rs) {
+   			$erreurs[] = "Mot de passe ou Email invalide";
+   		}else{
+   			$_SESSION["user"] = $rs;
+	   		setMsg("VOUS ETES CONNECTES CHER DEALER", "success");
+	   		redirect("dealer-space");
+   		}
+    }
+
+
+}
+?>
+
+<?php include('views/logindealer.views.php') ;?>
